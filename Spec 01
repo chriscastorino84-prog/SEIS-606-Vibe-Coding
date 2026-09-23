@@ -1,0 +1,119 @@
+# Specification 001: Core Loop — Purchase to First Card State
+**Phase:** 1 — Specify
+**Governing Document:** constitution.md v1.0
+**Status:** Draft v1.0
+**Last Amended:** 2026-09-23
+
+> This Spec defines the thinnest complete vertical slice of the product: a user purchases a program, logs one workout, and sees both the dashboard and the gamified card reflect that real data — including the first trophy unlock. It deliberately excludes depth in any single subsystem in favor of proving the full loop connects correctly, per the Constitution's lean-scope principle (Article VIII.1).
+
+---
+
+## 1. Feature Summary
+
+A user browses the catalog, purchases a single training program (the 24-week macro-cycle program used as the proof-of-concept), logs their first complete workout (warm-up + main lifts + cool-down), and immediately sees:
+1. Their dashboard update with one real tonnage data point.
+2. Their gamified Program Card transition from a fully locked state to a state showing real (if sparse) stats and the first unlocked trophy.
+
+---
+
+## 2. Reference Program (Proof of Concept)
+
+- **Structure:** 24-week macro-cycle, divided into 3 mesocycles.
+- **Workout unit:** Every individual workout session consists of a warm-up, main lifts, and a cool-down, logged together as a single unit — not as separate loggable events.
+- This Spec does not require all 24 weeks of content to exist; only enough structured data (at minimum, Workout #1 of Mesocycle 1) to prove the loop end-to-end.
+
+---
+
+## 3. User Stories
+
+**US-1.** As a prospective user, I want to purchase the program with a real payment, so that I gain access to its content immediately.
+
+**US-2.** As an enrolled user, I want to log my first workout (warm-up, main lifts, cool-down as one session), so that my effort is recorded.
+
+**US-3.** As an enrolled user, I want to see my dashboard reflect that logged workout via a tonnage data point, so that I have immediate feedback that my data was captured.
+
+**US-4.** As an enrolled user, I want my Program Card to visibly change — from locked to unlocked — after completing my first workout, so that I feel a sense of accomplishment and progress.
+
+**US-5.** As an enrolled user, I want to see my Program Card display real stats, a real (if minimal) graph, and a photo slot, even with only one workout logged, so that the card feels alive rather than a placeholder.
+
+---
+
+## 4. Functional Requirements
+
+### 4.1 Purchase
+- FR-1: System MUST process payment via Stripe for a single program SKU.
+- FR-2: On successful payment, system MUST create a User–Program enrollment record granting immediate, lifetime access (no expiration logic in this Spec).
+- FR-3: On payment failure, user MUST NOT gain access, and MUST see a clear error state (exact copy deferred to Plan phase).
+
+### 4.2 Workout Logging
+- FR-4: System MUST present Workout #1 (warm-up + main lifts + cool-down) as a single loggable unit once enrolled.
+- FR-5: User MUST be able to record, at minimum, weight and reps for each main-lift exercise in the workout.
+- FR-6: Any set/exercise field left unrecorded at the point the workout is marked complete MUST be saved as zero, not null (per Constitution Article II.3).
+- FR-7: On marking the workout complete, system MUST calculate **tonnage** for that session (tonnage = Σ(weight × reps) across all logged sets in that workout).
+- FR-8: The completion trigger MUST fire at the "real-time" points defined in Constitution Article II.3: immediately on explicit completion, or automatically at next-calendar-day rollover if not explicitly closed out.
+
+### 4.3 Dashboard
+- FR-9: Dashboard MUST display a graph containing at least one plotted data point: the tonnage value from Workout #1.
+- FR-10: The graph MUST be structured to accept additional data points in future workouts without redesign (i.e., time-series by workout, not a single static number).
+- FR-11: No other metrics (streaks, body measurements, secondary stats) are required in this Spec.
+
+### 4.4 Gamified Program Card
+- FR-12: Card MUST render two distinct sides/faces: (a) stats/graph/photo side, (b) trophy/token side.
+- FR-13: Prior to Workout #1 completion, the trophy side MUST render in a defined "locked" visual state.
+- FR-14: Immediately upon Workout #1 completion (same trigger as FR-8), the trophy side MUST transition to an "unlocked" visual state representing the "First Workout Complete" trophy.
+- FR-15: The stats side MUST render the real tonnage graph (per FR-9) rather than placeholder/mock data once Workout #1 is logged.
+- FR-16: The card MUST include a photo slot capable of displaying one user-uploaded image, even if only a single placeholder/"before" photo has been uploaded (full pre/post comparison logic is out of scope — see Section 6).
+
+### 4.5 Data Integrity
+- FR-17: All entities in this Spec (User, Program, Enrollment, Workout, WorkoutLog, Trophy, CardState) MUST persist in a manner that supports the Constitution's privacy standard (Article VI): encrypted at rest/in transit, private-by-default photo storage.
+
+---
+
+## 5. Key Data Entities (Conceptual — not final schema)
+
+| Entity | Purpose | Key Fields (non-exhaustive) |
+|---|---|---|
+| `Program` | The purchasable product | id, name, macro_cycle_weeks, mesocycle_count, strength_formula_ref |
+| `Workout` | A single program-defined session template | id, program_id, sequence_index, warmup_block, main_lift_block, cooldown_block |
+| `Enrollment` | Links a user to a purchased program | id, user_id, program_id, purchased_at, access_type (lifetime, v1) |
+| `WorkoutLog` | A user's completed instance of a Workout | id, enrollment_id, workout_id, completed_at, sets[], tonnage_total |
+| `Trophy` | A definable unlockable artifact | id, program_id, trigger_condition, asset_ref |
+| `CardState` | Current render state of a user's gamified card | id, enrollment_id, unlocked_trophy_ids[], latest_photo_ref |
+
+---
+
+## 6. Explicitly Out of Scope (Deferred to Later Specs)
+
+- Multiple concurrent program enrollments
+- Mesocycle-level or program-completion trophies (only "First Workout Complete" is in scope)
+- Full pre/post photo comparison logic (manual vs. automatic pairing)
+- Time-boxed or subscription-based program access
+- Refund handling and abandoned-program states
+- Affiliate commission tracking and celebrity/influencer licensing metadata (Constitution Article IV) — not exercised in this Spec since the proof-of-concept program has no third-party licensing attached
+- Multi-metric dashboard (volume load, streaks, body measurements)
+- Offline logging support
+
+---
+
+## 7. Acceptance Criteria (Definition of Done for Spec 1)
+
+- [ ] A test user can complete a real (or test-mode) Stripe purchase and immediately access the program.
+- [ ] A test user can log Workout #1 in full (warm-up + main lifts + cool-down) with at least one main-lift set recorded.
+- [ ] Tonnage is correctly calculated and stored for that session.
+- [ ] The dashboard graph renders with exactly one real data point matching the logged tonnage.
+- [ ] The Program Card renders in the "locked" trophy state prior to workout completion.
+- [ ] The Program Card renders in the "First Workout Complete" unlocked trophy state immediately after workout completion (or next-day rollover, per FR-8).
+- [ ] Uploading one photo populates the card's photo slot correctly.
+- [ ] No unrecorded set fields result in null values in the database (all default to zero).
+
+---
+
+## 8. Open Questions Carried Into Plan Phase
+
+- Exact visual/UX definition of "locked" vs. "unlocked" trophy states (art direction, not a Spec-phase concern).
+- Exact copy/UX for payment failure states.
+- Whether tonnage should be shown as a raw number, formatted (e.g., "12,450 lbs lifted"), or paired with a comparative/motivational label — flagged per your note that tonnage's large magnitude is intentionally being used for user motivation ("ego stroke"), which should inform Plan-phase UX copy decisions.
+
+---
+
+*End of Specification 001 v1.0*
