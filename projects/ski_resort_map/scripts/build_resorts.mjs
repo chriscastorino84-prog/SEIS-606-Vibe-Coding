@@ -200,7 +200,8 @@ const report = `# Build report — ${built}
 | With website | ${resorts.filter((r) => r.website).length} |
 | With skimap.org trail-map page | ${resorts.filter((r) => r.trail_map_page).length} |
 | Matched to live feed | ${feedMatched} |
-| With posted opening date | ${odMatched} |
+| With posted opening date | ${resorts.filter((r) => r.opening?.date).length} |
+| With opening note only (e.g. "ASAP") | ${resorts.filter((r) => r.opening && !r.opening.date).length} |
 
 ## By state
 ${Object.entries(byState).sort().map(([s, n]) => `${s} ${n}`).join(" · ")}

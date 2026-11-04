@@ -66,3 +66,40 @@ Each answer mapped to a specific spec/decision edit; diff reviewed. Live-source 
 **Commit:** `8b76663`
 
 ---
+
+## Round 3
+
+- **Date:** 2026-11-04
+- **Tool / model:** Claude (claude.ai, Claude Code harness) / claude-opus-5-5 (Chris switched models via /model before this round)
+- **Mode:** speckit/plan + speckit/tasks + speckit/implement
+- **Context given:** spec v0.2, constitution v1.0, D-001–D-005. Chris approved a Vercel sandbox so Claude could reach the open internet for data research.
+
+**Prompt (verbatim):**
+
+```text
+I authorized vercel
+```
+
+(The working request carried over from Round 2: proceed to plan → tasks → implement.)
+
+**What came back:**
+
+- Research in a Vercel sandbox: Liftie is blocked by a Cloudflare bot check. The ski-run-scraper feed is CORS-open (55 US resorts) but was last updated 2026-05-16. OpenSkiMap gives 513 qualifying US areas.
+- `plan.md` (research table, constitution check, structure, state machine) and `tasks.md` (T001–T020).
+- `scripts/build_resorts.mjs` + `data/opening_dates.json` (63 sourced entries) + `data/feed_aliases.json`. Built and checked against real data in the sandbox, then rebuilt by `.github/workflows/ski_resort_map_data.yml`, which committed `src/data/resorts.json` itself (commit `5655731`).
+- App: `src/ski_resort_map.html`, `app.js`, `lib.js`, `styles.css`, vendored Leaflet + markercluster.
+- Tests: `tests/lib.test.mjs` (10 unit tests: DST, Phoenix, Anchorage, stale-feed logic, status precedence) and `tests/smoke.mjs` (Playwright, 11 checks).
+- Decisions D-006 through D-010.
+
+**How it was checked:**
+
+- Build run twice against the real OpenSkiMap file; name mismatches fixed (Heavenly, Palisades, Snowmass, Sun Valley, Ski Santa Fe, The Highlands, Crotched). One known miss logged.
+- `node --test` 10/10 pass. Playwright smoke 11/11 pass, with tiles and feed stubbed (the workspace can't reach them): 513 markers, legend total, hover → preview, click → pin, stale badge on May data, official-site link, countdown ticks, "No live data" on static resorts, Esc closes, no page errors.
+- Desktop and mobile screenshots reviewed. Fixed the cluster-icon styling (missing MarkerCluster.Default.css) and a legend/report count mismatch.
+- **Not yet checked:** real map tiles and the live feed in a real browser (blocked in this workspace), and real hover with a mouse. Both need the deployed Pages URL.
+
+**Verdict:** kept with edits (the two fixes above).
+
+**Commit:** `ada6312`
+
+---

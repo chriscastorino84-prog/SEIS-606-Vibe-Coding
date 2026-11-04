@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>US Ski Resort Map — lifts, opening days, trail maps</title>
+  <meta name="description" content="Every operating US ski area on one map, with live lift status where available, opening-day countdowns, trail-map links and official sites.">
+  <link rel="stylesheet" href="vendor/leaflet.css">
+  <link rel="stylesheet" href="vendor/MarkerCluster.css">
+  <link rel="stylesheet" href="vendor/MarkerCluster.Default.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="bar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M2 20 9 8l4 6 3-4 6 10z" fill="currentColor"/><path d="m9 8 1.6 2.6L12 9.5 9 8z" fill="#fff" opacity=".9"/></svg>
+      </span>
+      <h1>US Ski Resort Map</h1>
+    </div>
+    <form class="search" role="search" onsubmit="return false">
+      <label for="q" class="sr">Find a resort</label>
+      <input id="q" list="resort-names" placeholder="Find a resort…" autocomplete="off">
+      <datalist id="resort-names"></datalist>
+    </form>
+  </header>
+
+  <main id="map" aria-label="Map of US ski areas"></main>
+
+  <section id="legend" class="legend" aria-label="Legend">
+    <div class="legend-row"><span class="dot live"></span><span><b data-count="live">–</b> with lift feed</span></div>
+    <div class="legend-row"><span class="dot open"></span><span><b data-count="open">–</b> open now</span></div>
+    <div class="legend-row"><span class="dot static"></span><span><b data-count="static">–</b> static info only</span></div>
+    <div class="legend-total"><b data-count="total">–</b> ski areas · <b data-count="dated">–</b> with posted opening day</div>
+    <div class="legend-feed" data-feed-status>Checking lift feed…</div>
+  </section>
+
+  <aside id="panel" class="panel" aria-live="polite" hidden>
+    <button class="panel-close" type="button" aria-label="Close">×</button>
+    <div class="panel-body"></div>
+  </aside>
+
+  <footer class="attrib">
+    Resorts: <a href="https://openskimap.org" target="_blank" rel="noopener">OpenSkiMap</a> (© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors, ODbL) ·
+    Lifts: <a href="https://github.com/jacobschulman/ski-run-scraper" target="_blank" rel="noopener">ski-run-scraper</a> ·
+    Trail maps: <a href="https://skimap.org" target="_blank" rel="noopener">skimap.org</a> ·
+    Not an official source — check the resort before you go.
+  </footer>
+
+  <script src="vendor/leaflet.js"></script>
+  <script src="vendor/leaflet.markercluster.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
