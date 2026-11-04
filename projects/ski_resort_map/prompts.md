@@ -31,6 +31,6 @@ Spec cross-read against the prompt sentence by sentence (map ✔, hover ✔, tra
 
 **Verdict:** kept, pending Chris's answers to the four open questions in `spec.md`.
 
-**Commit:** `<filled at commit>`
+**Commit:** `d3ebeb6`
 
 ---
