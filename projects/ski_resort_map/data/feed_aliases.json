@@ -1,0 +1,21 @@
+{
+  "_comment": "Live-feed key -> resort override when automatic name matching fails. Value: resort id from src/data/resorts.json, {name, state}, or null to ignore (non-US).",
+  "banff": null,
+  "lakelouise": null,
+  "norquay": null,
+  "tremblant": null,
+  "whistlerblackcomb": null,
+  "cypressmountain": null,
+  "blue": { "name": "Blue Mountain Resort", "state": "PA" },
+  "crystal": { "name": "Crystal Mountain", "state": "WA" },
+  "hunter": { "name": "Hunter Mountain", "state": "NY" },
+  "liberty": { "name": "Liberty Mountain Resort", "state": "PA" },
+  "palisades": { "name": "Palisades Tahoe", "state": "CA" },
+  "mtbrighton": { "name": "Mt. Brighton", "state": "MI" },
+  "snowcreek": { "name": "Snow Creek", "state": "MO" },
+  "hiddenvalley": { "name": "Hidden Valley", "state": "MO" },
+  "jackfrost": { "name": "Jack Frost", "state": "PA" },
+  "roundtop": { "name": "Roundtop Mountain Resort", "state": "PA" },
+  "wilmot": { "name": "Wilmot Mountain", "state": "WI" },
+  "paolipeaks": { "name": "Paoli Peaks", "state": "IN" }
+}
