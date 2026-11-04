@@ -33,7 +33,7 @@ Spec read against the prompt: "game like THPS" → trick set, grinds, manuals, c
 
 **Verdict:** kept.
 
-**Commit:** `<filled at commit>`
+**Commit:** `cdc3048`
 
 ---
 
@@ -62,6 +62,6 @@ Plan's constitution-check table filled article by article. Every FR in the spec 
 
 **Verdict:** kept.
 
-**Commit:** `<filled at commit>`
+**Commit:** `cdc3048`
 
 ---
