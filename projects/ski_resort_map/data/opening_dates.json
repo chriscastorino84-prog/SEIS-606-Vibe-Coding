@@ -1,0 +1,401 @@
+{
+  "_comment": "Posted (projected) 2026-27 opening days. One entry per resort; `source` is where the date was read. Re-check each season. `match` = exact OpenSkiMap name when it differs from `name`.",
+  "season": "2026-27",
+  "checked": "2026-11-04",
+  "resorts": [
+    {
+      "name": "Keystone",
+      "state": "CO",
+      "date": null,
+      "note": "Targeted opening as soon as conditions allow in October",
+      "source": "https://coloradobiz.com/vail-resorts-2026-27-ski-season-opening-dates-colorado/"
+    },
+    {
+      "name": "Arapahoe Basin",
+      "state": "CO",
+      "date": null,
+      "note": "As soon as possible in October",
+      "source": "https://www.denver7.com/news/recreation/heres-when-colorado-ski-resorts-could-open-for-2026-2027-season"
+    },
+    {
+      "name": "Breckenridge",
+      "state": "CO",
+      "date": "2026-11-06",
+      "source": "https://coloradobiz.com/vail-resorts-2026-27-ski-season-opening-dates-colorado/"
+    },
+    {
+      "name": "Copper Mountain",
+      "state": "CO",
+      "date": "2026-11-06",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Vail",
+      "state": "CO",
+      "date": "2026-11-13",
+      "source": "https://coloradobiz.com/vail-resorts-2026-27-ski-season-opening-dates-colorado/"
+    },
+    {
+      "name": "Eldora",
+      "state": "CO",
+      "date": "2026-11-13",
+      "source": "https://unofficialnetworks.com/2026/09/17/ikon-pass-us-ski-resort-opening-dates-2026-27/"
+    },
+    {
+      "name": "Steamboat",
+      "state": "CO",
+      "date": "2026-11-21",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Beaver Creek",
+      "state": "CO",
+      "date": "2026-11-25",
+      "source": "https://coloradobiz.com/vail-resorts-2026-27-ski-season-opening-dates-colorado/"
+    },
+    {
+      "name": "Crested Butte",
+      "state": "CO",
+      "date": "2026-11-25",
+      "source": "https://coloradobiz.com/vail-resorts-2026-27-ski-season-opening-dates-colorado/"
+    },
+    {
+      "name": "Aspen Mountain",
+      "state": "CO",
+      "date": "2026-11-26",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Snowmass",
+      "state": "CO",
+      "date": "2026-11-26",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/",
+      "match": "Aspen Snowmass"
+    },
+    {
+      "name": "Telluride",
+      "state": "CO",
+      "date": "2026-11-26",
+      "source": "https://www.redweek.com/blog/ski-season-2026"
+    },
+    {
+      "name": "Ski Cooper",
+      "state": "CO",
+      "date": "2026-12-09",
+      "source": "https://unofficialnetworks.com/2026/10/13/colorado-ski-resort-opening-dates/"
+    },
+    {
+      "name": "Sunlight",
+      "state": "CO",
+      "date": "2026-12-11",
+      "source": "https://unofficialnetworks.com/2026/10/13/colorado-ski-resort-opening-dates/"
+    },
+    {
+      "name": "Aspen Highlands",
+      "state": "CO",
+      "date": "2026-12-12",
+      "source": "https://unofficialnetworks.com/2026/09/10/ski-season-opening-dates-2026-27"
+    },
+    {
+      "name": "Buttermilk",
+      "state": "CO",
+      "date": "2026-12-12",
+      "source": "https://unofficialnetworks.com/2026/09/10/ski-season-opening-dates-2026-27"
+    },
+    {
+      "name": "Silverton Mountain",
+      "state": "CO",
+      "date": "2026-12-31",
+      "source": "https://unofficialnetworks.com/2026/09/10/ski-season-opening-dates-2026-27"
+    },
+    {
+      "name": "Brian Head",
+      "state": "UT",
+      "date": "2026-11-06",
+      "source": "https://unofficialnetworks.com/2026/09/10/ski-season-opening-dates-2026-27"
+    },
+    {
+      "name": "Park City",
+      "state": "UT",
+      "date": "2026-11-20",
+      "source": "https://www.kpcw.org/ski-resorts/2026-08-18/park-city-mountain-sets-nov-20-opening-date-week-before-thanksgiving"
+    },
+    {
+      "name": "Solitude",
+      "state": "UT",
+      "date": "2026-11-20",
+      "source": "https://unofficialnetworks.com/2026/09/17/ikon-pass-us-ski-resort-opening-dates-2026-27/"
+    },
+    {
+      "name": "Alta",
+      "state": "UT",
+      "date": "2026-11-20",
+      "source": "https://unofficialnetworks.com/2026/09/17/ikon-pass-us-ski-resort-opening-dates-2026-27/"
+    },
+    {
+      "name": "Snowbird",
+      "state": "UT",
+      "date": "2026-11-27",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Snowbasin",
+      "state": "UT",
+      "date": "2026-11-27",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Deer Valley",
+      "state": "UT",
+      "date": "2026-12-05",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Mammoth Mountain",
+      "state": "CA",
+      "date": "2026-11-13",
+      "source": "https://unofficialnetworks.com/2026/09/10/ski-season-opening-dates-2026-27"
+    },
+    {
+      "name": "Heavenly",
+      "state": "CA",
+      "date": "2026-11-20",
+      "source": "https://southtahoenow.com/?p=95315",
+      "match": "Heavenly Mountain Resort"
+    },
+    {
+      "name": "Northstar",
+      "state": "CA",
+      "date": "2026-11-20",
+      "source": "https://southtahoenow.com/?p=95315"
+    },
+    {
+      "name": "Palisades Tahoe",
+      "state": "CA",
+      "date": "2026-11-25",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/",
+      "match": "Palisades Tahoe Olympic Valley"
+    },
+    {
+      "name": "Sugar Bowl",
+      "state": "CA",
+      "date": "2026-11-27",
+      "note": "Targeted",
+      "source": "https://unofficialnetworks.com/2026/09/10/ski-season-opening-dates-2026-27"
+    },
+    {
+      "name": "Kirkwood",
+      "state": "CA",
+      "date": "2026-12-04",
+      "source": "https://southtahoenow.com/?p=95315"
+    },
+    {
+      "name": "June Mountain",
+      "state": "CA",
+      "date": "2026-12-19",
+      "note": "Reported target",
+      "source": "https://unofficialnetworks.com/2026/09/10/ski-season-opening-dates-2026-27"
+    },
+    {
+      "name": "Arizona Snowbowl",
+      "state": "AZ",
+      "date": "2026-11-20",
+      "source": "https://unofficialnetworks.com/2026/09/10/ski-season-opening-dates-2026-27"
+    },
+    {
+      "name": "Ski Santa Fe",
+      "state": "NM",
+      "date": "2026-11-26",
+      "note": "Tentative",
+      "source": "https://unofficialnetworks.com/2026/09/10/ski-season-opening-dates-2026-27"
+    },
+    {
+      "name": "Taos Ski Valley",
+      "state": "NM",
+      "date": "2026-11-26",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Angel Fire",
+      "state": "NM",
+      "date": "2026-12-11",
+      "source": "https://unofficialnetworks.com/2026/09/10/ski-season-opening-dates-2026-27"
+    },
+    {
+      "name": "Grand Targhee",
+      "state": "WY",
+      "date": "2026-11-20",
+      "source": "https://unofficialnetworks.com/2026/09/10/ski-season-opening-dates-2026-27"
+    },
+    {
+      "name": "Jackson Hole",
+      "state": "WY",
+      "date": "2026-11-27",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Big Sky",
+      "state": "MT",
+      "date": "2026-11-25",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Whitefish",
+      "state": "MT",
+      "date": "2026-12-04",
+      "source": "https://www.freeskier.com/north-american-ski-resort-202627-opening-dates"
+    },
+    {
+      "name": "Sun Valley",
+      "state": "ID",
+      "date": "2026-11-26",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/",
+      "match": "Sun Valley - Bald Mountain"
+    },
+    {
+      "name": "Schweitzer",
+      "state": "ID",
+      "date": "2026-11-27",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Crystal Mountain",
+      "state": "WA",
+      "date": "2026-11-27",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Stevens Pass",
+      "state": "WA",
+      "date": "2026-12-04",
+      "source": "https://coloradobiz.com/vail-resorts-2026-27-ski-season-opening-dates-colorado/"
+    },
+    {
+      "name": "Mount Bachelor",
+      "state": "OR",
+      "date": "2026-12-04",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Mount Hood Meadows",
+      "state": "OR",
+      "date": "2026-12-04",
+      "source": "https://www.freeskier.com/north-american-ski-resort-202627-opening-dates"
+    },
+    {
+      "name": "Alyeska",
+      "state": "AK",
+      "date": "2026-11-28",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Sunday River",
+      "state": "ME",
+      "date": "2026-11-15",
+      "source": "https://unofficialnetworks.com/2026/09/17/ikon-pass-us-ski-resort-opening-dates-2026-27/"
+    },
+    {
+      "name": "Sugarloaf",
+      "state": "ME",
+      "date": "2026-11-20",
+      "source": "https://unofficialnetworks.com/2026/09/17/ikon-pass-us-ski-resort-opening-dates-2026-27/"
+    },
+    {
+      "name": "Stratton",
+      "state": "VT",
+      "date": "2026-11-18",
+      "source": "https://unofficialnetworks.com/2026/09/17/ikon-pass-us-ski-resort-opening-dates-2026-27/"
+    },
+    {
+      "name": "Sugarbush",
+      "state": "VT",
+      "date": "2026-11-21",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Mount Snow",
+      "state": "VT",
+      "date": "2026-11-21",
+      "source": "https://unofficialnetworks.com/2026/10/27/vermont-ski-resorts-opening-2026"
+    },
+    {
+      "name": "Okemo",
+      "state": "VT",
+      "date": "2026-11-21",
+      "source": "https://unofficialnetworks.com/2026/10/27/vermont-ski-resorts-opening-2026"
+    },
+    {
+      "name": "Stowe",
+      "state": "VT",
+      "date": "2026-11-21",
+      "source": "https://unofficialnetworks.com/2026/10/27/vermont-ski-resorts-opening-2026"
+    },
+    {
+      "name": "Jay Peak",
+      "state": "VT",
+      "date": "2026-11-27",
+      "source": "https://www.sunandski.com/blog/travel/eastern-u-s-ski-resorts-opening-dates-for-the-2026-2027-season"
+    },
+    {
+      "name": "Smugglers' Notch",
+      "state": "VT",
+      "date": "2026-11-27",
+      "source": "https://www.sunandski.com/blog/travel/eastern-u-s-ski-resorts-opening-dates-for-the-2026-2027-season"
+    },
+    {
+      "name": "Pico",
+      "state": "VT",
+      "date": "2026-12-11",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Bretton Woods",
+      "state": "NH",
+      "date": "2026-11-20",
+      "source": "https://www.sunandski.com/blog/travel/eastern-u-s-ski-resorts-opening-dates-for-the-2026-2027-season"
+    },
+    {
+      "name": "Loon Mountain",
+      "state": "NH",
+      "date": "2026-11-20",
+      "source": "https://www.onthesnow.com/new-hampshire/open-resorts"
+    },
+    {
+      "name": "Cranmore",
+      "state": "NH",
+      "date": "2026-11-27",
+      "source": "https://www.sunandski.com/blog/travel/eastern-u-s-ski-resorts-opening-dates-for-the-2026-2027-season"
+    },
+    {
+      "name": "Snowshoe",
+      "state": "WV",
+      "date": "2026-11-25",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Granite Peak",
+      "state": "WI",
+      "date": "2026-11-21",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Lutsen Mountains",
+      "state": "MN",
+      "date": "2026-11-21",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "Snowriver",
+      "state": "MI",
+      "date": "2026-11-21",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/"
+    },
+    {
+      "name": "The Highlands",
+      "state": "MI",
+      "date": "2026-12-11",
+      "source": "https://snowbrains.com/ikon-pass-resorts-opening-dates-2026-27/",
+      "match": "Boyne Highlands Resort"
+    }
+  ]
+}

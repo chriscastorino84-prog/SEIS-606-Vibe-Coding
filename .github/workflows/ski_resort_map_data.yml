@@ -1,0 +1,39 @@
+# Rebuilds projects/ski_resort_map/src/data/resorts.json from OpenSkiMap + curated inputs
+# and commits it back to the branch that triggered the run. (ski_resort_map D-005, D-006)
+name: ski_resort_map data
+
+on:
+  push:
+    paths:
+      - "projects/ski_resort_map/scripts/**"
+      - "projects/ski_resort_map/data/**"
+      - ".github/workflows/ski_resort_map_data.yml"
+  schedule:
+    - cron: "17 9 * * 1"   # weekly, Monday 09:17 UTC — resort lists change slowly
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ski-resort-map-data-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build resorts.json
+        run: node projects/ski_resort_map/scripts/build_resorts.mjs >> "$GITHUB_STEP_SUMMARY"
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add projects/ski_resort_map/src/data
+          if git diff --cached --quiet; then echo "no data change"; exit 0; fi
+          git commit -m "ski_resort_map: rebuild resort data [bot]"
+          git push

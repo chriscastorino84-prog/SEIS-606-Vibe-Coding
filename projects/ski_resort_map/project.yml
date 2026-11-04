@@ -1,0 +1,16 @@
+name: US Ski Resort Map
+slug: ski_resort_map
+group: ~
+status: active          # idea | active | done | abandoned
+version: ~              # current git tag suffix, e.g. v1
+entry: src/ski_resort_map.html
+summary: Interactive map of every US ski resort: hover for the trail map, live lift/terrain status, opening-day countdown, and a link to the resort site
+created: 2026-11-04
+updated: 2026-11-04
+tools:
+  - {tool: Claude (claude.ai / Claude Code harness), model: claude-fable-5-1, role: constitution + spec + clarify}
+  - {tool: Claude (claude.ai / Claude Code harness), model: claude-opus-5-5, role: plan + tasks + implementation}
+spec_kit: true
+usefulness: ~           # 0–5, rounded mean of latest EVALUATION.md row
+time_hours: ~
+tags: [map, skiing, live-data, countdown, spec-kit, leaflet, openskimap, github-actions]
