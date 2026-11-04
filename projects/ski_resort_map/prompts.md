@@ -100,6 +100,6 @@ I authorized vercel
 
 **Verdict:** kept with edits (the two fixes above).
 
-**Commit:** `<filled at commit>`
+**Commit:** `ada6312`
 
 ---
