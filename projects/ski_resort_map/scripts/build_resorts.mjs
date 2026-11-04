@@ -43,6 +43,9 @@ const norm = (s) => {
 const slug = (s) =>
   (s || "").toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
+// A few OpenSkiMap names carry geocoder residue, e.g. "Ski Santa Fe, Santa Fe, Q38555".
+const cleanName = (s) => s.replace(/,\s*[^,]+,\s*Q\d+$/, "").trim();
+
 function centroid(geom) {
   // Average of all coordinates of the outer ring(s); good enough for a marker.
   if (geom.type === "Point") return geom.coordinates;
@@ -116,12 +119,12 @@ for (const f of geo.features) {
   const [lon, lat] = c;
   const state = (usPlace.iso3166_2 || "").replace("US-", "") || null;
   const skimap = (p.sources || []).find((s) => s.type === "skimap.org");
-  let id = slug(p.name) + (state ? "-" + state.toLowerCase() : "");
+  let id = slug(cleanName(p.name)) + (state ? "-" + state.toLowerCase() : "");
   if (seen.has(id)) id += "-" + p.id.slice(0, 6);
   seen.set(id, true);
   resorts.push({
     id,
-    name: p.name,
+    name: cleanName(p.name),
     state,
     lat: +lat.toFixed(5),
     lon: +lon.toFixed(5),
@@ -149,7 +152,7 @@ for (const [key, v] of Object.entries(feed)) {
   let target = null;
   const alias = feedAliases[key];
   if (alias === null) continue; // explicitly non-US / ignored
-  if (alias) target = resorts.find((r) => r.id === alias || (r.name === alias.name && r.state === alias.state));
+  if (alias) target = resorts.find((r) => r.id === alias || r.name === alias.name);
   if (!target) {
     const cands = byNorm.get(norm(v.name)) || byNorm.get(norm(key)) || [];
     if (cands.length === 1) target = cands[0];
@@ -163,7 +166,10 @@ for (const [key, v] of Object.entries(feed)) {
 const odUnmatched = [];
 let odMatched = 0;
 for (const od of openingDates.resorts) {
-  const cands = resorts.filter((r) => r.state === od.state && (norm(r.name) === norm(od.name) || (od.match && r.name === od.match)));
+  // An explicit `match` is an exact OpenSkiMap name and ignores state (Heavenly straddles CA/NV).
+  const cands = od.match
+    ? resorts.filter((r) => r.name === od.match)
+    : resorts.filter((r) => r.state === od.state && norm(r.name) === norm(od.name));
   const target = cands.sort((a, b) => b.lifts - a.lifts)[0];
   if (!target) { odUnmatched.push(`${od.name} (${od.state})`); continue; }
   target.opening = { date: od.date, note: od.note || null, source: od.source, checked: openingDates.checked };
