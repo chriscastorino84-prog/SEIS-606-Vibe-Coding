@@ -1,6 +1,6 @@
 # Feature Specification: US Ski Resort Map — core loop
 
-**Feature:** `001-ski_resort_map` · **Created:** 2026-11-04 · **Status:** Draft v0.1 (awaiting Chris's review)
+**Feature:** `001-ski_resort_map` · **Created:** 2026-11-04 · **Status:** Draft v0.2 (clarified 2026-11-04, prompts.md Round 2)
 **Governing document:** `../constitution.md` v1.0
 
 **Input (Chris, verbatim, prompts.md Round 1):**
@@ -63,10 +63,10 @@ Every panel has a clearly labeled link to the resort's official website, opening
 ## Functional Requirements
 - **FR-1** The system MUST load `data/resorts.json` containing, per resort: `id`, `name`, `aliases[]`, `state`, `lat`, `lon`, `timezone`, `website`, `trail_map_url` (nullable), `opening_date` (nullable, ISO), `opening_date_source` (URL + checked date), `status_source` (nullable: provider + provider id), `source` (where the base record came from).
 - **FR-2** The system MUST render all records as markers on a slippy map with clustering above a configurable zoom threshold.
-- **FR-3** The system MUST open a detail panel on hover (pointer devices) and tap (touch devices), and close it on pointer leave / second tap / Escape.
+- **FR-3** The system MUST open a detail panel on hover (pointer devices) and tap (touch devices); a click pins the panel open until Escape, the close button, or a click elsewhere on the map. Unpinned panels close on pointer leave.
 - **FR-4** The system MUST fetch live status from the configured provider for resorts with a `status_source`, cache it in memory with a timestamp, and re-fetch no more often than every 60 s per resort and at least every 5 min while a panel is open.
 - **FR-5** The system MUST display per-lift status and aggregate counts when available, and terrain status when the provider returns it, each labeled with source and fetched-at time.
-- **FR-6** The system MUST show the official trail map by URL when `trail_map_url` is set, otherwise an open-data rendering with ODbL attribution.
+- **FR-6** The system MUST show the official trail map by URL when `trail_map_url` is an embeddable image; otherwise it MUST show a "View trail map ↗" link to the resort's trail-map page (or its website when none is known).
 - **FR-7** The system MUST compute and tick a countdown to `opening_date` 09:00 in the resort's `timezone` when that instant is in the future and the live feed does not report the resort open.
 - **FR-8** The system MUST show the official website link in every panel.
 - **FR-9** The system MUST show a legend with counts: total resorts, resorts with live status, resorts currently open (from live feeds).
@@ -91,7 +91,13 @@ Every panel has a clearly labeled link to the resort's official website, opening
 - Partial live coverage in v1 is acceptable provided it is labeled (constitution II.2, V.1) — **confirm with Chris**.
 - Opening dates are gathered once per season into the data file (semi-manual, scripted where a source exists), not scraped live.
 
-## Open questions — NEEDS CLARIFICATION
+## Clarifications (Round 2, 2026-11-04)
+1. **Coverage:** partial live coverage in v1 is accepted. → constitution V.1 stands; D-001 accepted.
+2. **Trail-map fallback:** "what's easiest" → link out to the resort's trail-map page (or site) when no embeddable official map URL is known; no open-data rendering in v1. Supersedes FR-6's fallback clause and US-2 scenario 3's fallback. → D-003.
+3. **Hover + click-to-pin:** yes → hover previews the panel; click pins it so the pointer can reach links; Escape / click elsewhere unpins. Amends FR-3.
+4. **Hosting:** GitHub Pages, static only → no proxy. Live sources must be fetchable cross-origin from the browser or pre-fetched into static JSON by a scheduled GitHub Action. → decided in plan.md.
+
+## Open questions (resolved above, kept for the record)
 1. **Coverage bar for v1:** is "live status for the ~60–100 resorts an open aggregator already covers, static for the rest" acceptable, or is broad live coverage a v1 requirement (which forces a server-side scraper and a much larger build)?
 2. **Trail map fallback:** is an open-data rendering acceptable where no official map can be embedded, or should those panels simply link out?
 3. **Hover vs. click on desktop:** hover-to-open is what you asked for; do you also want click-to-pin so the panel stays while the pointer moves to it (needed to click the website link)? Proposed: hover previews, click pins.

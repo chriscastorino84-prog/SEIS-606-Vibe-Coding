@@ -34,3 +34,35 @@ Spec cross-read against the prompt sentence by sentence (map ✔, hover ✔, tra
 **Commit:** `d3ebeb6`
 
 ---
+
+## Round 2
+
+- **Date:** 2026-11-04
+- **Tool / model:** Claude (claude.ai, Claude Code harness) / claude-fable-5-1
+- **Mode:** speckit/clarify
+- **Context given:** `spec.md` v0.1 open questions 1–4.
+
+**Prompt (verbatim):**
+
+```text
+1. yes
+2. what's easiest
+3.  yes
+4. pages
+```
+
+**What came back:**
+
+Spec → v0.2 with a Clarifications section; FR-3 (hover + click-to-pin) and FR-6 (link-out trail-map fallback) amended. Decisions: D-001 accepted; D-003 link-out fallback; D-004 hover/pin; D-005 GitHub Pages static-only, with a scheduled GitHub Action pre-fetching any live source that blocks cross-origin calls.
+
+Data-access probing during this round: the workspace shell, the web fetcher (URL-length cap, robots rules) and Chrome (not connected) couldn't pull the full Wikidata/Overpass resort lists; Chris authorized a Vercel sandbox for the fetch.
+
+**How it was checked:**
+
+Each answer mapped to a specific spec/decision edit; diff reviewed. Live-source CORS behavior is still unverified and is the first item in plan.md research.
+
+**Verdict:** kept.
+
+**Commit:** `<filled at commit>`
+
+---
