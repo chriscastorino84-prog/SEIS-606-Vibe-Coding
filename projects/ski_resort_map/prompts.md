@@ -63,6 +63,6 @@ Each answer mapped to a specific spec/decision edit; diff reviewed. Live-source 
 
 **Verdict:** kept.
 
-**Commit:** `<filled at commit>`
+**Commit:** `8b76663`
 
 ---
