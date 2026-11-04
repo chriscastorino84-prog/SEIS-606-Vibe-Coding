@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Skate Game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.js" } }
+</script>
+</head>
+<body>
+<canvas id="gl"></canvas>
+
+<div id="hud" class="hidden">
+  <div id="top-left">
+    <div id="score-label">SCORE</div>
+    <div id="score">0</div>
+  </div>
+  <div id="top-right">
+    <div id="timer">2:00</div>
+    <div id="best-line">BEST <span id="best">0</span></div>
+  </div>
+  <div id="combo">
+    <div id="combo-name"></div>
+    <div id="combo-math"></div>
+  </div>
+  <div id="balance" class="hidden"><div id="balance-track"><div id="balance-pin"></div></div></div>
+  <div id="toast" class="hidden"></div>
+  <div id="speed"></div>
+</div>
+
+<div id="menu">
+  <div class="panel" id="panel-start">
+    <h1>SKATE<span>GAME</span></h1>
+    <p class="sub">A vibe-coded 3D skater. Push, pop, flip, grind, manual, combo.</p>
+    <div class="modes">
+      <button data-mode="run" class="primary">① 2-minute run</button>
+      <button data-mode="free">② Free skate</button>
+    </div>
+    <p class="best-start">Best run: <span id="menu-best">0</span></p>
+    <table class="controls">
+      <tr><th>Move</th><td><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> / arrows — push, turn, brake</td></tr>
+      <tr><th>Ollie</th><td><kbd>Space</kbd> hold to go higher · ollie off rails</td></tr>
+      <tr><th>Flips</th><td><kbd>J</kbd> kickflip <kbd>K</kbd> heelflip <kbd>L</kbd> shove-it <kbd>;</kbd> 360 flip</td></tr>
+      <tr><th>Grabs</th><td><kbd>U</kbd> indy <kbd>I</kbd> melon <kbd>O</kbd> nosegrab <kbd>P</kbd> tailgrab (hold)</td></tr>
+      <tr><th>Spin</th><td><kbd>A</kbd>/<kbd>D</kbd> in the air · land within 35° of a 180</td></tr>
+      <tr><th>Grind</th><td>land on a rail · parallel = 50-50 · sideways = boardslide · hold <kbd>W</kbd>/<kbd>S</kbd> = nosegrind / 5-0 · balance with <kbd>A</kbd>/<kbd>D</kbd></td></tr>
+      <tr><th>Manual</th><td><kbd>S</kbd> then <kbd>W</kbd> (nose manual: <kbd>W</kbd> then <kbd>S</kbd>) · keeps the combo alive</td></tr>
+      <tr><th>Other</th><td><kbd>Esc</kbd> pause <kbd>R</kbd> restart <kbd>N</kbd> mute <kbd>C</kbd> camera</td></tr>
+    </table>
+    <p class="hint">Press <kbd>1</kbd> or <kbd>2</kbd> to start</p>
+  </div>
+
+  <div class="panel hidden" id="panel-pause">
+    <h2>PAUSED</h2>
+    <p><kbd>Esc</kbd> resume · <kbd>R</kbd> restart · <kbd>M</kbd> menu</p>
+  </div>
+
+  <div class="panel hidden" id="panel-end">
+    <h2>TIME</h2>
+    <div class="end-score"><span id="end-score">0</span></div>
+    <p id="end-newbest" class="newbest hidden">NEW BEST</p>
+    <table class="stats">
+      <tr><th>Best combo</th><td id="end-best-combo">0</td></tr>
+      <tr><th>Longest combo</th><td id="end-longest">0 tricks</td></tr>
+      <tr><th>Bails</th><td id="end-bails">0</td></tr>
+      <tr><th>All-time best</th><td id="end-alltime">0</td></tr>
+    </table>
+    <p><kbd>R</kbd> run again · <kbd>M</kbd> menu</p>
+  </div>
+</div>
+
+<div id="webgl-fail" class="hidden">
+  <div class="panel"><h2>WebGL unavailable</h2><p>This game needs a browser with WebGL enabled.</p></div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

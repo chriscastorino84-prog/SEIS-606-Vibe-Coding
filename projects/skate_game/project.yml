@@ -1,0 +1,15 @@
+name: Skate Game
+slug: skate_game
+group: ~
+status: active          # idea | active | done | abandoned
+version: v1             # current git tag suffix, e.g. v1
+entry: src/skate.html   # file the index links to; ~ if not browser-runnable
+summary: A fully playable 3D skateboarding game in the browser: ollies, flip tricks, grabs, spins, grinds, manuals, combos and a 2-minute scored run in a skatepark
+created: 2026-11-04
+updated: 2026-11-04
+tools:
+  - {tool: Claude (claude.ai / Claude Code harness), model: claude-fable-5-1, role: constitution + spec + plan + implementation}
+spec_kit: true
+usefulness: ~           # 0–5, rounded mean of latest EVALUATION.md row
+time_hours: 1.5         # Chris's time this session; the model's run time isn't counted
+tags: [game, 3d, three.js, skateboarding, spec-kit]
